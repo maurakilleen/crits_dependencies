@@ -22,3 +22,14 @@ install_dependencies.sh script which comes with it.
 
 This will take care of using the OS's package management system to download some
 basic packages before installing the local content.
+
+# Building new dependencies
+
+All of the dependencies found in the Ubuntu and RedHat directories were built
+using FPM. FPM can be found here:
+
+https://github.com/jordansissel/fpm
+
+If you wish to update any of the packages to a newer version or introduce new
+dependencies, please use FPM to build debs and rpms. Place them in the
+appropriate directory and update the install_dependencies.sh script.

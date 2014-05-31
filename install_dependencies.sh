@@ -49,19 +49,13 @@ then
 	sudo apt-get -y install libpcap-dev
 	echo "Installing Python requirements..."
 	sudo apt-get -y install python-simplejson python-pycurl python-dev python-pydot python-pyparsing python-yaml python-setuptools python-numpy python-matplotlib python-lxml
-	if [ "$VER" == '10.04' ]
-	then
-		echo "Installing importlib 1.0.2..."
-		cd importlib-1.0.2 && sudo ${PYBIN} setup.py install && cd ..
-		echo "Installing ordereddict 1.1..."
-		cd ordereddict-1.1 && sudo ${PYBIN} setup.py install && cd ..
-	fi
-	echo "Installing python-dateutil 1.5..."
-	cd python-dateutil-1.5 && sudo ${PYBIN} setup.py install && cd ..
 	echo "Installing UPX"
 	sudo apt-get -y install upx
 	echo "Installing M2Crypto"
 	sudo apt-get -y install m2crypto
+    echo "Installing local debs..."
+    cd Ubuntu && sudo dpkg -i *.deb
+    cd ..
 # TODO: Need to test centos dependencies
 # elif [ "$OS" == 'centos' ] || [ "$OS" == 'redhat' ]
 elif [ "$OS" == 'red hat' ]
@@ -83,12 +77,9 @@ then
 	echo "Installing Python requirements..."
 	sudo yum install python-pycurl python-dateutil python-devel python-setuptools
 	sudo yum install numpy matplotlib
-	cd pydot-1.0.28 && sudo ${PYBIN} setup.py install && cd ..
-	cd pyparsing-1.5.6 && sudo ${PYBIN} setup.py install && cd ..
-	sudo rpm -i libyaml-0.1.4-1.el6.rf.x86_64.rpm
-	cd PyYAML-3.10 && sudo ${PYBIN} setup.py install && cd ..
-	echo "Installing UPX"
-	sudo rpm -i upx-3.07-1.el6.rf.x86_64.rpm
+    echo "Installing local rpms..."
+    cd RedHat && sudo rpm -i *.rpm
+    cd ..
 else
 	echo "Unknown distro!"
 	echo -e "Detected: $OS $VER"
@@ -97,53 +88,4 @@ fi
 
 echo "Installing MongoDB 2.6.1..."
 sudo cp mongodb-linux-x86_64-2.6.1/bin/* /usr/local/bin/
-echo "Installing PyMongo 2.7..."
-cd pymongo-2.7 && sudo ${PYBIN} setup.py install && cd ..
-echo "Installing DefusedXML 0.4.1..."
-cd defusedxml-0.4.1 && sudo ${PYBIN} setup.py install && cd ..
-echo "Installing Django 1.6.2..."
-cd Django-1.6.2 && sudo ${PYBIN} setup.py install && cd ..
-echo "Installing Django Tastypie 0.11.0..."
-cd django-tastypie-0.11.0 && sudo ${PYBIN} setup.py install && cd ..
-echo "Installing Django Tastypie Mongoengine 0.4.5..."
-cd django-tastypie-mongoengine-0.4.5. && sudo ${PYBIN} setup.py install && cd ..
-echo "Installing MongoEngine 0.8.7..."
-cd mongoengine-0.8.7 && sudo ${PYBIN} setup.py install && cd ..
-echo "Installing ssdeep..."
-cd ssdeep-2.7 && sudo ./configure && sudo make && sudo make install && cd ..
-cd pydeep && sudo ${PYBIN} setup.py install && cd ..
-if [ -f /usr/local/lib/libfuzzy.so.2.0.0 ];
-then
-        sudo echo '/usr/local/lib' > /etc/ld.so.conf.d/libfuzzy-x86_64.conf
-else
-        sudo echo '/usr/lib' > /etc/ld.so.conf.d/libfuzzy-x86_64.conf
-fi
-echo "Installing Python pefile..."
-cd pefile-1.2.10-114 && sudo ${PYBIN} setup.py install && cd ..
-echo "Installing Python magic..."
-cd python-magic && sudo ${PYBIN} setup.py install && cd ..
-echo "Installing Yara 1.6..."
-cd yara-1.6 && sudo ./configure && sudo make && sudo make install && cd ..
-cd yara-python-1.6 && sudo ${PYBIN} setup.py install && cd ..
-sudo ldconfig
-echo "Installing Pynids 0.6.1..."
-cd pynids-0.6.1
-tar -xzf libnids-1.24.tar.gz
-cd libnids-1.24
-CFLAGS=-fPIC ./configure --disable-libglib --disable-libnet
-make
-cd ..
-sudo ${PYBIN} setup.py build
-sudo ${PYBIN} setup.py install && cd ..
-echo "Installing dependencies for Services Framework..."
-cd anyjson-0.3.3 && sudo ${PYBIN} setup.py install && cd ..
-cd amqp-1.0.6 && sudo ${PYBIN} setup.py install && cd ..
-cd billiard-2.7.3.19 && sudo ${PYBIN} setup.py install && cd ..
-cd kombu-2.5.4 && sudo ${PYBIN} setup.py install && cd ..
-cd celery-3.0.12 && sudo ${PYBIN} setup.py install && cd ..
-cd django-celery-3.0.11 && sudo ${PYBIN} setup.py install && cd ..
-cd requests-v1.1.0-9 && sudo ${PYBIN} setup.py install && cd ..
-cd cybox-2.0.0b6 && sudo ${PYBIN} setup.py install && cd ..
-cd stix-1.0.0a7 && sudo ${PYBIN} setup.py install && cd ..
-cd libtaxii-1.0.105 && sudo ${PYBIN} setup.py install && cd ..
 echo "Dependency installations complete!"
