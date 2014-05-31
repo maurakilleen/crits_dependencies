@@ -1,0 +1,3 @@
+lxml>=2.3
+python-dateutil
+cybox>=2.0.0b6
