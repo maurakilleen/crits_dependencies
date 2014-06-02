@@ -106,7 +106,7 @@ cd Django-1.6.2 && sudo ${PYBIN} setup.py install && cd ..
 echo "Installing Django Tastypie 0.11.0..."
 cd django-tastypie-0.11.0 && sudo ${PYBIN} setup.py install && cd ..
 echo "Installing Django Tastypie Mongoengine 0.4.5..."
-cd django-tastypie-mongoengine-0.4.5. && sudo ${PYBIN} setup.py install && cd ..
+cd django-tastypie-mongoengine-0.4.5 && sudo ${PYBIN} setup.py install && cd ..
 echo "Installing MongoEngine 0.8.7..."
 cd mongoengine-0.8.7 && sudo ${PYBIN} setup.py install && cd ..
 echo "Installing ssdeep..."
