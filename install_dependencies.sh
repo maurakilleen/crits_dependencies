@@ -145,5 +145,5 @@ cd django-celery-3.0.11 && sudo ${PYBIN} setup.py install && cd ..
 cd requests-v1.1.0-9 && sudo ${PYBIN} setup.py install && cd ..
 cd cybox-2.0.0b6 && sudo ${PYBIN} setup.py install && cd ..
 cd stix-1.0.0a7 && sudo ${PYBIN} setup.py install && cd ..
-cd libtaxii-1.0.105 && sudo ${PYBIN} setup.py install && cd ..
+cd libtaxii-1.1.101 && sudo ${PYBIN} setup.py install && cd ..
 echo "Dependency installations complete!"
